@@ -28,11 +28,6 @@ function animateSlides() {
       reverse: false
     })
       .setTween(slideTl)
-      // .addIndicators({
-      //   colorStart: "white",
-      //   colorTrigger: "white",
-      //   name: "slide"
-      // })
       .addTo(controller);
     //New ANimation
     const pageTl = gsap.timeline();
@@ -186,11 +181,6 @@ function detailAnimation() {
     })
       .setPin(slide, { pushFollowers: false })
       .setTween(slideTl)
-      // .addIndicators({
-      //   colorStart: "white",
-      //   colorTrigger: "white",
-      //   name: "detailScene"
-      // })
       .addTo(controller);
   });
 }
