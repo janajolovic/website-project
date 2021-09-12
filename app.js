@@ -4,12 +4,12 @@ let pageScene;
 let detailScene;
 
 function animateSlides() {
-  //Init Controller
+
   controller = new ScrollMagic.Controller();
   //Select some things
   const sliders = document.querySelectorAll(".slide");
   const nav = document.querySelector(".nav-header");
-  //Loop over each sllide
+
   sliders.forEach((slide, index, slides) => {
     const revealImg = slide.querySelector(".reveal-img");
     const img = slide.querySelector("img");
@@ -18,6 +18,7 @@ function animateSlides() {
     const slideTl = gsap.timeline({
       defaults: { duration: 1, ease: "power2.inOut" }
     });
+
     slideTl.fromTo(revealImg, { x: "0%" }, { x: "100%" });
     slideTl.fromTo(img, { scale: 2 }, { scale: 1 }, "-=1");
     slideTl.fromTo(revealText, { x: "0%" }, { x: "100%" }, "-=0.75");
@@ -27,6 +28,7 @@ function animateSlides() {
       triggerHook: 0.25,
       reverse: false
     })
+
       .setTween(slideTl)
       .addTo(controller);
     //New ANimation
@@ -41,24 +43,22 @@ function animateSlides() {
       duration: "100%",
       triggerHook: 0
     })
-      // .addIndicators({
-      //   colorStart: "white",
-      //   colorTrigger: "white",
-      //   name: "page",
-      //   indent: 200
-      // })
+
       .setPin(slide, { pushFollowers: false })
       .setTween(pageTl)
       .addTo(controller);
   });
 }
+
 const mouse = document.querySelector(".cursor");
 const mouseTxt = mouse.querySelector("span");
 const burger = document.querySelector(".burger");
+
 function cursor(e) {
   mouse.style.top = e.pageY + "px";
   mouse.style.left = e.pageX + "px";
 }
+
 function activeCursor(e) {
   const item = e.target;
   if (item.id === "logo" || item.classList.contains("burger")) {
@@ -76,6 +76,7 @@ function activeCursor(e) {
     gsap.to(".title-swipe", 1, { y: "100%" });
   }
 }
+
 function navToggle(e) {
   if (!e.target.classList.contains("active")) {
     e.target.classList.add("active");
@@ -184,6 +185,8 @@ function detailAnimation() {
       .addTo(controller);
   });
 }
+
+
 //EventListeners
 burger.addEventListener("click", navToggle);
 window.addEventListener("mousemove", cursor);
